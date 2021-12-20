@@ -1,0 +1,24 @@
+.page-header {
+  background: $header-background;
+  border-bottom: solid 4px $header-border;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  .flex {
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 3rem;
+
+    a {
+      color: $body-color;
+      text-decoration: none;
+    }
+
+    .icon {
+      color: $header-icon-color;
+    }
+  }
+}

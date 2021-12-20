@@ -1,0 +1,11 @@
+.page-footer {
+  border-top: solid 4px $footer-border;
+  line-height: 2;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  text-align: center;
+
+  a {
+    color: $footer-link-color;
+  }
+}
