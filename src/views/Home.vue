@@ -30,7 +30,7 @@ export default {
     }
   },
   mounted() {
-    const apiUrl = 'http://127.0.0.1:8000/api/recipes';
+    const apiUrl = 'https://pmcg-recipe-box.herokuapp.com/api/recipes';
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
