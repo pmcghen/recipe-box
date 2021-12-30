@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted() {
-    fetch('http://127.0.0.1:8000/api/recipes/')
+    fetch('https://pmcg-recipe-box.herokuapp.com/api/recipes/')
       .then(response => response.json())
       .then(data => {
         for (const recipe of data) {

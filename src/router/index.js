@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import About from '@/views/About.vue'
 import RecipeDetail from '@/views/RecipeDetail.vue'
 import NotFound from '@/views/NotFound.vue'
+import SignUp from '@/views/SignUp.vue'
+import LogIn from '@/views/LogIn.vue'
 
 const routes = [
   {
@@ -20,6 +22,16 @@ const routes = [
     name: 'recipe-detail',
     component: RecipeDetail,
     props: true
+  },
+  {
+    path: '/sign-up',
+    name: 'sign-up',
+    component: SignUp
+  },
+  {
+    path: '/log-in',
+    name: 'log-in',
+    component: LogIn
   },
   {
     path: '/404',
