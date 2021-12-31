@@ -7,7 +7,7 @@
           The Recipe Box
         </router-link>
       </div>
-      <form action="/search" method="get">
+      <form action="search" method="get">
         <label class="accessible-text" for="query">Search</label>
         <input name="query" placeholder="Search...">
         <input type="submit" value="Search">
