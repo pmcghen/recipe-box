@@ -29,9 +29,11 @@ export default {
       featuredRecipes: [],
     }
   },
-  mounted() {
+  async mounted() {
+    this.$store.commit('setIsLoading', true);
+
     const apiUrl = 'https://pmcg-recipe-box.herokuapp.com/api/recipes';
-    fetch(apiUrl)
+    await fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         this.recipes = data;
@@ -45,6 +47,8 @@ export default {
       .catch(error => {
         console.error(error.response);
       });
+
+    this.$store.commit('setIsLoading', false);
   }
 }
 </script>

@@ -5,6 +5,7 @@ import RecipeDetail from '@/views/RecipeDetail.vue'
 import NotFound from '@/views/NotFound.vue'
 import SignUp from '@/views/SignUp.vue'
 import LogIn from '@/views/LogIn.vue'
+import Search from '@/views/Search.vue'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/log-in',
     name: 'log-in',
     component: LogIn
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: Search
   },
   {
     path: '/404',
