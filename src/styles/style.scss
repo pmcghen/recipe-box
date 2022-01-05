@@ -9,15 +9,15 @@ $raisin-black: #272932;
 $tumbleweed: #d8a47f;
 
 $body-color: $raisin-black;
+$header-color: $alice-blue;
 $header-icon-color: $tumbleweed;
-$link-color: $skobeloff;
+$link-color: $sizzling-red;
 $footer-link-color: $sizzling-red;
 $footer-color: $alice-blue;
 
-$header-background: $alice-blue;
-
-$footer-border: $skobeloff;
-$header-border: $sizzling-red;
+$header-background: $raisin-black;
+$footer-background: $header-background;
+$card-background: $alice-blue;
 
 body {
   color: $body-color;
@@ -35,7 +35,7 @@ h4,
 h5,
 h6 {
   font-family: $heading-font;
-  margin-top: 0;
+  margin: 0;
 }
 
 a {
@@ -67,5 +67,23 @@ p {
   justify-content: space-between;
 }
 
+.two-column {
+  gap: 1.5rem;
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+}
+
+.accessible-text {
+  position: absolute;
+  left: -9999rem;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
 @import 'components/page-header';
 @import 'components/page-footer';
+@import 'components/card';

@@ -1,18 +1,19 @@
 <template>
   <main class="wrapper">
     <h1>{{ recipe.name }}</h1>
-    <div class="flex">
+    <div class="flex two-column">
       <div>
         <h2>Ingredients</h2>
-        <p>{{ recipe.ingredients }}</p>
+        <p v-html="ingredients" />
       </div>
       <div>
         <h2>Directions</h2>
-        <p>{{ recipe.directions }}</p>
+        <p v-html="directions" />
       </div>
     </div>
     <div v-if="recipe.notes">
-      {{ recipe.notes }}
+      <h2>Notes</h2>
+      <p v-html="notes" />
     </div>
   </main>
 </template>
@@ -43,5 +44,28 @@ export default {
         console.error(error.response);
       });
   },
+  computed: {
+    ingredients() {
+      if (this.recipe.ingredients) {
+        return this.recipe.ingredients.replace(/(?:\r\n|\r|\n)/g, '<br>');
+      } else {
+        return false;
+      }
+    },
+    directions() {
+      if (this.recipe.directions) {
+        return this.recipe.directions.replace(/(?:\r\n|\r|\n)/g, '<br>');
+      } else {
+        return false;
+      }
+    },
+    notes() {
+      if (this.recipe.notes) {
+        return this.recipe.notes.replace(/(?:\r\n|\r|\n)/g, '<br>');
+      } else {
+        return false;
+      }
+    }
+  }
 }
 </script>

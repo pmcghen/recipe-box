@@ -1,19 +1,31 @@
 .page-header {
   background: $header-background;
-  border-bottom: solid 4px $header-border;
-  margin-bottom: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  color: $header-color;
+  padding: 0.625rem 1.625rem;
 
   .flex {
     align-items: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 767px) {
+      justify-content: center;
+
+      form {
+        margin-top: 0.66rem;
+        margin-bottom: 0.66rem;
+      }
+    }
   }
 
   .logo {
-    font-size: 3rem;
+    font-size: 1.75rem;
+
+    @media (min-width: 768px) {
+      font-size: 2.125rem;
+    }
 
     a {
-      color: $body-color;
+      color: $header-color;
       text-decoration: none;
     }
 
