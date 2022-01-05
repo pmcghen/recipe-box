@@ -27,3 +27,12 @@ npm run build
 ```
 npm run lint
 ```
+## Acknowledgements
+
+Stock images from [Pexels](https://www.pexels.com)
+
+  - [Homepage hero img](https://www.pexels.com/photo/fruit-salads-in-plate-1640774/)
+  - [Pizza](https://www.pexels.com/photo/dinner-fast-food-lunch-meal-3644/)
+  - [Bacon](https://www.pexels.com/photo/heap-of-bacon-cut-into-small-slices-4202892/)
+  - [Pies](https://www.pexels.com/photo/three-round-pies-288264/)
+  - [Mac and cheese](https://www.pexels.com/photo/white-ceramic-plate-with-yellow-rice-9397238/)
