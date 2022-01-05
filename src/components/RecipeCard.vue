@@ -1,6 +1,7 @@
 <template>
   <div class="card">
     <router-link :to="recipeUrl">
+      <img v-if="recipe.image" :src="recipe.image" alt="" class="img-responsive">
       <p class="card-heading">{{ recipe.name }}</p>
       <div class="card-details">
       </div>

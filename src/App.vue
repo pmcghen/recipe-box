@@ -1,6 +1,6 @@
 <template>
   <header class="page-header">
-    <div class="wrapper flex between">
+    <div class="flex between">
       <div class="logo">
         <router-link to="/">
           <font-awesome-icon :icon="['fas', 'cookie-bite']" class="icon" />
@@ -24,6 +24,7 @@
       </nav>
     </div>
   </header>
+  <img src="./assets/hero.jpg" alt="" class="img-responsive">
   <router-view :key="$route.fullPath" />
   <footer class="page-footer">
     <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">

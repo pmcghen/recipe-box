@@ -1,17 +1,18 @@
 <template>
   <section class="features">
     <h2>Featured</h2>
-    <div class="flex">
-      <div class="card" v-for="feature in featuredRecipes" :key="feature.id">
-        <router-link :to="{ name: 'recipe-detail', params: { slug: feature.slug } }">
-          <h3 class="card-heading">{{ feature.name }}</h3>
-        </router-link>
-      </div>
+    <div class="flex card-row">
+      <RecipeCard v-for="feature in featuredRecipes" :key="feature.id" :recipe="feature" />
     </div>
   </section>
 </template>
 <script>
+import RecipeCard from '@/components/RecipeCard.vue';
+
 export default {
+  components: {
+    RecipeCard
+  },
   props: {
     featuredRecipes: {
       type: Array,
