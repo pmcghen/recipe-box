@@ -60,9 +60,11 @@ export default {
           const token = response.data.auth_token;
 
           this.$store.commit('setToken', token);
+          this.$store.commit('setAuthenticatedUser', formData)
 
           axios.defaults.headers.common['Authorization'] = `Token ${token}`;
           localStorage.setItem('token', token);
+          this.$store.state.isAuthenticated = true;
 
           const toPath = this.$route.query.to || '/';
 

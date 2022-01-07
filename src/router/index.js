@@ -6,6 +6,7 @@ import NotFound from '@/views/NotFound.vue'
 import SignUp from '@/views/SignUp.vue'
 import LogIn from '@/views/LogIn.vue'
 import Search from '@/views/Search.vue'
+import Profile from '@/views/Profile.vue'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/search',
     name: 'search',
     component: Search
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile
   },
   {
     path: '/404',
