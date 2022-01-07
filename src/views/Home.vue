@@ -25,6 +25,7 @@ export default {
   },
   async mounted() {
     this.$store.commit('setIsLoading', true);
+    document.title = 'Home | The Recipe Box';
 
     const apiUrl = 'https://pmcg-recipe-box.herokuapp.com/api/recipes';
     await fetch(apiUrl)

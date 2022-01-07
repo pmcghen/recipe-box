@@ -16,7 +16,7 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link> |
         <template v-if="$store.state.isAuthenticated">
-          <router-link to="/">My Recipe Box</router-link>
+          <router-link to="/profile">My Recipe Box</router-link>
         </template>
         <template v-else>
           <router-link to="/log-in">Log in</router-link>
@@ -37,6 +37,22 @@
     </a>
   </footer>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  mounted() {
+    const token = this.$store.state.token;
+
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = 'Token ' + token;
+    } else {
+      axios.defaults.headers.common['Authorization'] = '';
+    }
+  }
+}
+</script>
 
 <style lang="scss">
   @import 'styles/style.scss';

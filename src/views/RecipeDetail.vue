@@ -28,11 +28,16 @@ export default {
   },
   data() {
     return {
-      recipe: {}
+      recipe: {
+        name: '',
+        ingredients: '',
+        directions: '',
+        notes: ''
+      }
     }
   },
-  mounted() {
-    fetch('https://pmcg-recipe-box.herokuapp.com/api/recipes/')
+  async mounted() {
+    await fetch('https://pmcg-recipe-box.herokuapp.com/api/recipes/')
       .then(response => response.json())
       .then(data => {
         for (const recipe of data) {
@@ -43,29 +48,19 @@ export default {
       .catch(error => {
         console.error(error.response);
       });
+
+      document.title = this.recipe.name + ' | The Recipe Box';
   },
   computed: {
     ingredients() {
-      if (this.recipe.ingredients) {
-        return this.recipe.ingredients.replace(/(?:\r\n|\r|\n)/g, '<br>');
-      } else {
-        return false;
-      }
+      return this.recipe.ingredients.replace(/(?:\r\n|\r|\n)/g, '<br>');
     },
     directions() {
-      if (this.recipe.directions) {
-        return this.recipe.directions.replace(/(?:\r\n|\r|\n)/g, '<br>');
-      } else {
-        return false;
-      }
+      return this.recipe.directions.replace(/(?:\r\n|\r|\n)/g, '<br>');
     },
     notes() {
-      if (this.recipe.notes) {
-        return this.recipe.notes.replace(/(?:\r\n|\r|\n)/g, '<br>');
-      } else {
-        return false;
-      }
-    }
+      return this.recipe.notes.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    },
   }
 }
 </script>

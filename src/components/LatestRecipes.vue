@@ -13,7 +13,10 @@ export default {
     RecipeCard
   },
   props: {
-    recipes: []
+    recipes: {
+      type: Array,
+      required: true
+    }
   }
 };
 </script>

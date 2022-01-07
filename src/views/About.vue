@@ -6,3 +6,11 @@
     <p>The recipes found here are my own, and you're free to use and distribute them under CC Attribution-ShareAlike 4.0 license.</p>
   </main>
 </template>
+
+<script>
+export default {
+  mounted() {
+    document.title = 'About | The Recipe Box';
+  }
+}
+</script>

@@ -14,10 +14,12 @@ $header-icon-color: $tumbleweed;
 $link-color: $sizzling-red;
 $footer-link-color: $sizzling-red;
 $footer-color: $alice-blue;
+$btn-color: $alice-blue;
 
 $header-background: $raisin-black;
 $footer-background: $header-background;
 $card-background: $alice-blue;
+$btn-background: $skobeloff;
 
 body {
   color: $body-color;
@@ -36,6 +38,14 @@ h5,
 h6 {
   font-family: $heading-font;
   margin: 0;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 1.33rem;
 }
 
 a {
@@ -67,6 +77,10 @@ p {
   justify-content: space-between;
 }
 
+.flex-header {
+  align-items: center;
+}
+
 .two-column {
   gap: 1.5rem;
 }
@@ -87,3 +101,5 @@ p {
 @import 'components/page-header';
 @import 'components/page-footer';
 @import 'components/card';
+@import 'components/forms';
+@import 'components/avatar';
