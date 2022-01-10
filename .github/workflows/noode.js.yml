@@ -6,11 +6,11 @@ name: Node.js CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
+    env:
+      VUE_APP_API_SERVER: https://pmcg-recipebox.herokuapp.com/api/
 
     runs-on: ubuntu-latest
 

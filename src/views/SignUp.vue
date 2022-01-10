@@ -69,7 +69,9 @@ export default {
       }
     },
     async createUser(userData) {
-      await fetch('https://pmcg-recipe-box.herokuapp.com/api/users/', {
+      const apiUrl = process.env.VUE_APP_API_SERVER + 'users/'
+
+      await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -56,7 +56,9 @@ export default {
   async mounted() {
     document.title = 'My Recipe Box | The Recipe Box'
 
-    await axios.get('https://pmcg-recipe-box.herokuapp.com/api/users/current/', {
+    const apiUrl = process.env.VUE_APP_API_SERVER + 'users/current/'
+
+    await axios.get(apiUrl, {
       auth: {
         username: this.$store.state.authenticatedUser.username,
         password: this.$store.state.authenticatedUser.password,

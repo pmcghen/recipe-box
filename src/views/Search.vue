@@ -1,16 +1,16 @@
 <template>
   <main class="wrapper">
     <h1>Search</h1>
-    <RecipeCard v-for="recipe in recipes" :recipe="recipe" :key="recipe.id"/>
+    <Card v-for="recipe in recipes" :recipe="recipe" :key="recipe.id"/>
   </main>
 </template>
 
 <script>
-import RecipeCard from '@/components/RecipeCard.vue';
+import Card from '@/components/Card.vue';
 
 export default {
   components: {
-    RecipeCard
+    Card
   },
   data() {
     return {
@@ -22,7 +22,9 @@ export default {
     async getResults(searchQuery = {}) {
       this.$store.commit('setIsLoading', true);
 
-      const response = await fetch(`https://pmcg-recipe-box.herokuapp.com/api/search/`, {
+      const apiUrl = process.env.VUE_APP_API_SERVER + 'search/'
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
