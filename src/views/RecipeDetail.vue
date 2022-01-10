@@ -37,7 +37,9 @@ export default {
     }
   },
   async mounted() {
-    await fetch('https://pmcg-recipe-box.herokuapp.com/api/recipes/')
+    const apiUrl = process.env.VUE_APP_API_SERVER + 'recipes/'
+
+    await fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         for (const recipe of data) {

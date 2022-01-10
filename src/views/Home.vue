@@ -2,20 +2,29 @@
   <main class="wrapper">
     <h1>Welcome!</h1>
     <p>Here you'll find a collection of my go-to recipes for breads, pastas, sides, and more!</p>
-    <FeaturedRecipes :featuredRecipes="featuredRecipes" />
-    <LatestRecipes :recipes="recipes" />
+    <section class="features">
+      <h2>Featured</h2>
+      <div class="flex card-row">
+        <Card v-for="feature in featuredRecipes" :key="feature.id" :recipe="feature" />
+      </div>
+    </section>
+    <section class="latest">
+      <h2>Latest</h2>
+      <div class="flex card-row">
+        <Card v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
+      </div>
+    </section>
   </main>
 </template>
 
 <script>
-import FeaturedRecipes from '@/components/FeaturedRecipes.vue';
-import LatestRecipes from '@/components/LatestRecipes.vue';
+// import FeaturedRecipes from '@/components/FeaturedRecipes.vue';
+import Card from '@/components/Card.vue';
 
 export default {
   name: 'Home',
   components: {
-    FeaturedRecipes,
-    LatestRecipes,
+    Card,
   },
   data() {
     return {
@@ -27,7 +36,7 @@ export default {
     this.$store.commit('setIsLoading', true);
     document.title = 'Home | The Recipe Box';
 
-    const apiUrl = 'https://pmcg-recipe-box.herokuapp.com/api/recipes';
+    const apiUrl = process.env.VUE_APP_API_SERVER + 'recipes';
     await fetch(apiUrl)
       .then(response => response.json())
       .then(data => {

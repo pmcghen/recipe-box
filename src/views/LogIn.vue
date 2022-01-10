@@ -54,8 +54,10 @@ export default {
         password: this.password
       };
 
+      const apiUrl = process.env.VUE_APP_API_SERVER + 'token/login/';
+
       await axios
-        .post('https://pmcg-recipe-box.herokuapp.com/api/token/login/', formData)
+        .post(apiUrl, formData)
         .then(response => {
           const token = response.data.auth_token;
 
