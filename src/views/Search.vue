@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import NProgress from 'nprogress';
 import Card from '@/components/Card.vue';
 
 export default {
@@ -20,7 +21,7 @@ export default {
   },
   methods: {
     async getResults(searchQuery = {}) {
-      this.$store.commit('setIsLoading', true);
+      NProgress.start();
 
       const apiUrl = process.env.VUE_APP_API_SERVER + 'search/'
 
@@ -32,7 +33,7 @@ export default {
         body: JSON.stringify(searchQuery)
       });
 
-      this.$store.commit('setIsLoading', false);
+      NProgress.done();
 
       return response.json();
     }

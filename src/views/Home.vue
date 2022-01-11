@@ -18,7 +18,7 @@
 </template>
 
 <script>
-// import FeaturedRecipes from '@/components/FeaturedRecipes.vue';
+import NProgress from 'nprogress';
 import Card from '@/components/Card.vue';
 
 export default {
@@ -33,8 +33,9 @@ export default {
     }
   },
   async mounted() {
-    this.$store.commit('setIsLoading', true);
     document.title = 'Home | The Recipe Box';
+
+    NProgress.start();
 
     const apiUrl = process.env.VUE_APP_API_SERVER + 'recipes';
     await fetch(apiUrl)
@@ -49,10 +50,11 @@ export default {
         })
       })
       .catch(error => {
+        NProgress.done();
         console.error(error.response);
       });
 
-    this.$store.commit('setIsLoading', false);
+    NProgress.done();
   }
 }
 </script>

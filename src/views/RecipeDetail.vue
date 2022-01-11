@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import NProgress from 'nprogress';
+
 export default {
   props: {
     slug: {
@@ -37,6 +39,8 @@ export default {
     }
   },
   async mounted() {
+    NProgress.start();
+
     const apiUrl = process.env.VUE_APP_API_SERVER + 'recipes/'
 
     await fetch(apiUrl)
@@ -48,10 +52,12 @@ export default {
         }
       })
       .catch(error => {
+        NProgress.done();
         console.error(error.response);
       });
 
       document.title = this.recipe.name + ' | The Recipe Box';
+      NProgress.done();
   },
   computed: {
     ingredients() {

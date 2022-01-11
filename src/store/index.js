@@ -3,7 +3,6 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     isAuthenticated: false,
-    isLoading: false,
     token: '',
     authenticatedUser: {
       username: '',
@@ -27,9 +26,6 @@ export default createStore({
     removeToken(state) {
       state.token = '';
       state.isAuthenticated = false;
-    },
-    setIsLoading(state, status) {
-      state.isLoading = status;
     },
     setAuthenticatedUser(state, user) {
       state.authenticatedUser.username = user.username;
