@@ -3,14 +3,9 @@
     <form @submit.prevent="submitForm">
       <fieldset>
         <legend>Log in!</legend>
-        <div v-if="errors.length" class="notice-box">
+        <div v-if="error" class="notice-box">
           <p class="notice">Oops!</p>
-          <p>We found the following errors:</p>
-          <ul>
-            <li v-for="error in errors" :key="error">
-              {{ error }}
-            </li>
-          </ul>
+          <p>{{ error }}</p>
         </div>
         <ol>
           <li>
@@ -30,58 +25,29 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   data() {
     return {
       username: '',
       password: '',
-      errors: []
+      error: null
     }
   },
   mounted() {
     document.title = 'Log in | The Recipe Box';
   },
   methods: {
-    async submitForm() {
-      axios.defaults.headers.common['Authorization'] = '';
-
-      localStorage.removeItem('token');
-
-      const formData = {
+    submitForm() {
+      this.$store.dispatch('login', {
         username: this.username,
         password: this.password
-      };
-
-      const apiUrl = process.env.VUE_APP_API_SERVER + 'token/login/';
-
-      await axios
-        .post(apiUrl, formData)
-        .then(response => {
-          const token = response.data.auth_token;
-
-          this.$store.commit('setToken', token);
-          this.$store.commit('setAuthenticatedUser', formData)
-
-          axios.defaults.headers.common['Authorization'] = `Token ${token}`;
-          localStorage.setItem('token', token);
-          this.$store.state.isAuthenticated = true;
-
-          const toPath = this.$route.query.to || '/';
-
-          this.$router.push(toPath)
-        })
-        .catch(err => {
-          if (err.response) {
-            for (const property in err.response.data) {
-              this.errors.push(`${property}: ${err.response.data[property]}`);
-            }
-          } else {
-            this.errors.push('Unexpected error. Give it another try.');
-            console.log(JSON.stringify(err));
-          }
-        });
+      })
+      .then(() => {
+        this.$router.push({ name: 'profile' });
+      })
+      .catch(err => {
+        this.error = err.response.data.non_field_errors[0];
+      });
     }
   }
 }

@@ -12,6 +12,10 @@
             </li>
           </ul>
         </div>
+        <div class="notice-box" v-if="error">
+          <p class="notice">Oops!</p>
+          <p>{{ error }}</p>
+        </div>
         <ol class="form-list">
           <li>
             <label for="username">User name:</label>
@@ -41,7 +45,8 @@ export default {
       username: '',
       password: '',
       password2: '',
-      errors: []
+      errors: [],
+      error: null
     }
   },
   methods: {
@@ -65,43 +70,18 @@ export default {
           username: this.username,
           password: this.password
         };
+
         this.createUser(userData);
       }
     },
-    async createUser(userData) {
-      const apiUrl = process.env.VUE_APP_API_SERVER + 'users/'
-
-      await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
+    createUser(userData) {
+      this.$store.dispatch('register', userData)
+      .then(() => {
+        this.$router.push({ name: 'profile' });
       })
-        .then(response => {
-          if (response.status >=200 && response.status <= 299) {
-            this.$router.push('/log-in');
-          } else {
-            return response.json();
-          }
-        })
-        .then(response => {
-          for (const property in response) {
-            this.errors.push(`${property}: ${response[property]}`);
-          }
-          console.log(response);
-        })
-        .catch(err => {
-          if (err.response) {
-            for (const property in err.response.data) {
-              this.errors.push(`${property}: ${err.response.data[property]}`);
-            }
-          } else if (err.message) {
-            this.errors.push('Unexpected error. Give it another try.');
-
-            console.log(JSON.stringify(err));
-          }
-        });
+      .catch(err => {
+        this.error = err.response.data.username[0];
+      });
     }
   },
   mounted() {
