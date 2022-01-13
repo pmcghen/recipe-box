@@ -29,6 +29,7 @@
 
 <script>
 import axios from 'axios';
+import NProgress from 'nprogress';
 
 export default {
   data() {
@@ -45,16 +46,14 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.commit('removeToken');
-      localStorage.removeItem('token');
-
-      this.$store.state.isAuthenticated = false;
+      this.$store.dispatch('logout');
 
       this.$router.push('/');
     }
   },
   async mounted() {
     document.title = 'My Recipe Box | The Recipe Box'
+    NProgress.start();
 
     const apiUrl = process.env.VUE_APP_API_SERVER + 'users/current/'
 
@@ -69,7 +68,10 @@ export default {
       })
       .catch(error => {
         console.log(error);
+        NProgress.done();
       })
+
+      NProgress.done();
   },
   computed: {
     fullName() {

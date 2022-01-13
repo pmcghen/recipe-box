@@ -15,7 +15,7 @@
       <nav>
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link> |
-        <template v-if="$store.state.isAuthenticated">
+        <template v-if="loggedIn">
           <router-link to="/profile">My Recipe Box</router-link>
         </template>
         <template v-else>
@@ -39,17 +39,19 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { authComputed } from '@/store/helpers.js';
 
 export default {
   mounted() {
-    const token = this.$store.state.token;
+    const userString = localStorage.getItem('authenticatedUser');
 
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = 'Token ' + token;
-    } else {
-      axios.defaults.headers.common['Authorization'] = '';
+    if (userString) {
+      const userData = JSON.parse(userString);
+      this.$store.commit('SET_USER_DATA', userData);
     }
+  },
+  computed: {
+    ...authComputed
   }
 }
 </script>
