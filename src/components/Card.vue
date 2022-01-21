@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <router-link :to="recipeUrl">
+    <router-link :to="recipeUrl" data-test="recipe-link">
       <img v-if="recipe.image" :src="recipe.image" alt="" class="img-responsive">
       <p class="card-heading">{{ recipe.name }}</p>
       <div class="card-details">
@@ -12,7 +12,11 @@
 <script>
 export default {
   props: {
-    recipe: {}
+    recipe: {
+      name: String,
+      image: String,
+      slug: String
+    }
   },
   computed: {
     recipeUrl() {
