@@ -46,7 +46,7 @@ export default {
     await fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        for (const recipe of data) {
+        for (const recipe of data.results) {
           if (recipe.slug === this.slug)
           this.recipe = recipe;
         }
