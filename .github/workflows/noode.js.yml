@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     env:
-      VUE_APP_API_SERVER: https://pmcg-recipe-box.herokuapp.com/api/
+      VUE_APP_API_SERVER: https://pmcg-recipe-box.herokuapp.com/
 
     runs-on: ubuntu-latest
 

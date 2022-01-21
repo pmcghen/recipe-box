@@ -41,7 +41,7 @@ export default {
     await fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        this.recipes = data;
+        this.recipes = data.results;
 
         this.recipes.forEach(recipe => {
           if (recipe.isFeatured) {
@@ -51,7 +51,7 @@ export default {
       })
       .catch(error => {
         NProgress.done();
-        console.error(error.response);
+        console.error(error);
       });
 
     NProgress.done();
