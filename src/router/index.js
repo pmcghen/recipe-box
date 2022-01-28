@@ -7,6 +7,7 @@ import SignUp from '@/views/SignUp.vue'
 import LogIn from '@/views/LogIn.vue'
 import Search from '@/views/Search.vue'
 import Profile from '@/views/Profile.vue'
+import AddRecipe from '@/views/AddRecipe.vue'
 
 const routes = [
   {
@@ -18,6 +19,13 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About
+  },
+  {
+    path: '/add-recipe',
+    name: 'AddRecipe',
+    component: AddRecipe,
+    meta: { requiresAuth: true },
+    props: true
   },
   {
     path: '/recipe/:slug',

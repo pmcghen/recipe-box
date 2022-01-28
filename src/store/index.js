@@ -8,8 +8,8 @@ export default createStore({
   mutations: {
     SET_USER_DATA(state, user) {
       state.authenticatedUser = user;
-      localStorage.setItem('authenticatedUser', JSON.stringify(user));
-      axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+      localStorage.setItem('authenticatedUser', JSON.stringify({ username: user.username }));
+      axios.defaults.headers.common['Authorization'] = `Bearer ${user.auth_token}`;
     },
     CLEAR_USER_DATA() {
       localStorage.removeItem('authenticatedUser');
