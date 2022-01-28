@@ -3,7 +3,7 @@
     <header class="flex between flex-header">
       <h1>Welcome, {{ user.first_name }}!</h1>
       <nav>
-        <span>Add a Recipe</span> | <span>My Recipes</span> | <span>My Favorites</span> | <span>Edit Profile</span>
+        <router-link :to="{ name: 'AddRecipe', params: { id: user.id } }">Add a Recipe</router-link> | <span>My Recipes</span> | <span>My Favorites</span> | <span>Edit Profile</span>
       </nav>
     </header>
     <div v-if="user.avatar" class="flex two-column">
